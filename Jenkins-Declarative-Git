@@ -1,0 +1,5 @@
+node {
+   stage('git checkout') {
+    git branch: 'main', credentialsId: 'github', url: 'https://github.com//ceptravi/kube-deploy'
+  }
+}

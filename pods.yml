@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-deploy
+  labels:
+    app: kube-deploy
+spec:
+  containers:
+    - name: kube-deploy
+      image: ceptravi/kube-deploy:tagVersion
+      ports:
+        - containerPort: 8080
