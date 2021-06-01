@@ -4,7 +4,7 @@ node {
   }
    stage('Build Docker Image'){
    steps {
-   withDockerRegistry([ credentialsId: "ceptravi", url: "https://hub.docker.com/repository/docker/ceptravi/dop_mailoperations" ]) {
+   withDockerRegistry([ credentialsId: 'docker-hub', url: "https://hub.docker.com/repository/docker/ceptravi/dop_mailoperations" ]) {
       // following commands will be executed within logged docker registry
       sh 'docker push <image>'
    }
