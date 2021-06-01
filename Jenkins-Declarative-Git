@@ -1,43 +1,20 @@
-node {
-   stage('git checkout') {
-    git branch: 'main', credentialsId: 'github', url: 'https://github.com//ceptravi/kube-deploy'
-  }
-   stage('Build Docker Image'){
-   steps {
-   withDockerRegistry([ credentialsId: 'docker-hub', url: "https://hub.docker.com/repository/docker/ceptravi/dop_mailoperations" ]) {
-      // following commands will be executed within logged docker registry
-      sh 'docker push <image>'
-   }
-}
-           
-        }
-        stage('Docker Push'){
-            steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPwd')]) {
-                    sh "docker login -u ceptravi -p ${dockerPwd}"
-                    sh "docker push ceptravi/kude-deploy:latest"
-                }
+pipeline {
+    agent any 1
+    stages { 
+        stage('Build') { 2
+            steps { 
+                // 3
             }
         }
-        stage('Deploy to k8s'){
-            steps{
-               
-					sh "chmod +x changeTag.sh"
-					sh "./changeTag.sh ${DOCKER_TAG}"
-					sshagent(['kube-machine']) {
-    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
-    					script{
-    					    try{
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
-    					    }
-    					    catch(error){
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
-    					    }
-
-    					  
-    					}
-}
-					}
-                    
-   }              
+        stage('Test') { 4
+            steps { 
+                // 5
+            }
+        }
+        stage('Deploy') { 6
+            steps {
+                // 7
+            }
+        }
+    }
 }
