@@ -11,10 +11,11 @@ pipeline {
         }
         stage('Docker Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'anitscse51')]) {
-                    sh "docker login -u ceptravi -p anitscse51"
-                    sh "docker push ceptravi/kude-deploy:latest"
-                }
+              withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                    
+       					sh "docker login --username=ceptravi --password=anitscse51"
+       					sh "docker push ceptravi/kube-deploy:latest"
+				}
             }
         }
         stage('Deploy to k8s'){
