@@ -3,9 +3,9 @@ node {
     git branch: 'main', credentialsId: 'github', url: 'https://github.com//ceptravi/kube-deploy'
   }
    stage('Build Docker Image'){
-            steps{
+           
                 sh "docker build . -t ceptravi/kube-deploy:latest"
-            }
+           
         }
         stage('Docker Push'){
             steps{
