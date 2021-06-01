@@ -1,1 +1,3 @@
-**/*.tgz
+*
+!obj/Docker/publish/*
+!obj/Docker/empty/
