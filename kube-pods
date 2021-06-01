@@ -1,6 +1,27 @@
 // Build a Maven project using the standard image and Scripted syntax.
 // Rather than inline YAML, you could use: yaml: readTrusted('jenkins-pod.yaml')
 // Or, to avoid YAML: containers: [containerTemplate(name: 'maven', image: 'maven:3.6.3-jdk-8', command: 'sleep', args: 'infinity')]
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
 podTemplate(yaml: '''
 apiVersion: v1
 kind: Pod
