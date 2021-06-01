@@ -21,8 +21,7 @@ pipeline {
         stage('Deploy to k8s'){
             steps{
                
-					sh "chmod +x changeTag.sh"
-					sh "./changeTag.sh ${DOCKER_TAG}"
+	
 					sshagent(['kube-machine']) {
     					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
     					script{
