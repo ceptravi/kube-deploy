@@ -3,7 +3,8 @@ node {
     git branch: 'main', credentialsId: 'github', url: 'https://github.com//ceptravi/kube-deploy'
   }
    stage('Build Docker Image'){
-           
+   
+   				sudo usermod -a -G docker jenkins        
                 sh "docker build . -t ceptravi/kube-deploy:latest"
            
         }
