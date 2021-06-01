@@ -4,17 +4,25 @@ pipeline {
         DOCKER_TAG = getDockerTag()
        
     }
+      stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
     stages{
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t ceptravi/kube-deploy:${DOCKER_TAG}"
+                
+                sh "docker build . -t ceptravi/kube-deploy:latest"
             }
         }
         stage('Docker Push'){
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPwd')]) {
                     sh "docker login -u ceptravi -p ${dockerPwd}"
-                    sh "docker push ceptravi/kude-deploy ${DOCKER_TAG}"
+                    sh "docker push ceptravi/kude-deploy:latest"
                 }
             }
         }
@@ -28,13 +36,13 @@ pipeline {
     					script{
     					    try{
     					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
-    					    }
+    					    	}
     					    catch(error){
     					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
-    					    }
+    					    			}
 
     					  
-    					}
+    							}
 
 					}
                     
