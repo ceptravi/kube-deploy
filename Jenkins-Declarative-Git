@@ -1,10 +1,43 @@
 node {
-  stage 'Building image'
-  git '…'
-  def newApp = docker.build "ceptravi/kube-deploy:${env.BUILD_TAG}"
-  newApp.push() // record this snapshot (optional)
-  stage 'Test image'
-  // run some tests on it (see below), then if everything looks good:
-  stage 'Approve image'
-  newApp.push 'latest'
+   stage('git checkout') {
+    git branch: 'main', credentialsId: 'github', url: 'https://github.com//ceptravi/kube-deploy'
+  }
+   stage('Build Docker Image'){
+   steps {
+   withDockerRegistry([ credentialsId: "ceptravi", url: "https://hub.docker.com/repository/docker/ceptravi/dop_mailoperations" ]) {
+      // following commands will be executed within logged docker registry
+      sh 'docker push <image>'
+   }
+}
+           
+        }
+        stage('Docker Push'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPwd')]) {
+                    sh "docker login -u ceptravi -p ${dockerPwd}"
+                    sh "docker push ceptravi/kude-deploy:latest"
+                }
+            }
+        }
+        stage('Deploy to k8s'){
+            steps{
+               
+					sh "chmod +x changeTag.sh"
+					sh "./changeTag.sh ${DOCKER_TAG}"
+					sshagent(['kube-machine']) {
+    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
+    					script{
+    					    try{
+    					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
+    					    }
+    					    catch(error){
+    					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
+    					    }
+
+    					  
+    					}
+}
+					}
+                    
+   }              
 }
