@@ -1,4 +1,4 @@
-FROM ceptravi/kube-deploy
+FROM node:carbon
 
 
 # Create app directory
