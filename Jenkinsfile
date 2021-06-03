@@ -23,6 +23,7 @@ pipeline {
                     
        					sh "kubectl apply -f ."
        					sh "docker push ceptravi/kube-deploy:latest"
+       					}
 				}
        
           stage('Deploy to dev'){
