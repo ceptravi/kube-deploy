@@ -29,7 +29,7 @@ pipeline {
             steps{
             kubernetesDeploy(kubeconfigId: 'ravi_cept',               // REQUIRED
 
-                 configs: '<ant-glob-pattern-for-resource-config-paths>', // REQUIRED
+                 configs: '~/.kube/config', // REQUIRED
                  enableConfigSubstitution: false,
         
                  secretNamespace: 'default',
