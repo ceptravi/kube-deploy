@@ -30,7 +30,7 @@ pipeline {
                  secretName: 'dashboard-token-chnwr',
                  dockerCredentials: [
                         [credentialsId: 'ceptravi'],
-                        [credentialsId: '<credentials-id-for-other-private-registry>', url: '<registry-url>'],
+                        [credentialsId: 'ceptravi', url: 'https://index.docker.io/v1'],
                  ]
 )
             }
