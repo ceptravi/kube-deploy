@@ -18,6 +18,11 @@ pipeline {
 				}
             }
         }
+         stage('Deploy to dev') {
+            steps {
+                 sh "kubectl apply -f deployment.yml"
+            }
+        }
         stage('Deploy K8 practise'){
             steps{
             kubernetesDeploy configs: 'apiVersion: v1 clusters: - cluster:     certificate-authority-data: DATA+OMITTED     server: https://172.28.12.11::/home/ravi_cept/   name: kubernetes contexts: - context:     cluster: kubernetes     user: kubernetes-admin   name: kubernetes-admin@kubernetes current-context: kubernetes-admin@kubernetes kind: Config preferences: {} users: - name: kubernetes-admin   user:     client-certificate-data: REDACTED     client-key-data: REDACTED', kubeConfig: [path: ''], kubeconfigId: 'mykubeconfig', secretName: 'default-token-rkpxh', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
