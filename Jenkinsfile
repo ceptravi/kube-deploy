@@ -21,7 +21,7 @@ pipeline {
        
           stage('Deploy to dev'){
             steps{
-            kubernetesDeploy(kubeconfigId: 'ravi_cept',               // REQUIRED
+            kubernetesDeploy(kubeconfigId: 'kube-master',               // REQUIRED
 
                  configs: '~/.kube/config', // REQUIRED
                  enableConfigSubstitution: false,
