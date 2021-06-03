@@ -18,14 +18,8 @@ pipeline {
 				}
             }
         }
-         stage('Deploy to dev') {
-            steps {
-            sh "sudo -s"
-                 sh "kubectl apply -f deployment.yml"
-            }
-        }
-        
-          stage('Deploy K8 practise'){
+       
+          stage('Deploy to dev'){
             steps{
             kubernetesDeploy(kubeconfigId: 'ravi_cept',               // REQUIRED
 
