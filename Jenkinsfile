@@ -21,7 +21,7 @@ pipeline {
        
           stage('Deploy to dev'){
             steps{
-            kubernetesDeploy(kubeconfigId: 'ravi_cept@172.28.12.11:/home/ravi_cept/',               // REQUIRED
+            kubernetesDeploy(kubeconfigId: 'ravi_cept',               // REQUIRED
 
                  configs: '~/.kube/config', // REQUIRED
                  enableConfigSubstitution: false,
