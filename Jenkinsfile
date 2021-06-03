@@ -20,6 +20,7 @@ pipeline {
         }
          stage('Deploy to dev') {
             steps {
+            sh "sudo -s"
                  sh "kubectl apply -f deployment.yml"
             }
         }
