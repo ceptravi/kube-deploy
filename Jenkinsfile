@@ -18,6 +18,22 @@ pipeline {
 				}
             }
         }
+        
+        stage('Deploying Docker Image') {
+			steps {
+				script {
+					 kubernetesDeploy(
+                                credentialsType: 'KubeConfig',
+                                kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
+                                configs: 'mypods-deployment.yml', 
+                                dockerCredentials: [
+                                      [credentialsId: 'my_registry_creds_id'],
+                                ],
+					)
+				}
+			}
+		}
+        
          stage('Deploy App') {
       steps {
         script {
