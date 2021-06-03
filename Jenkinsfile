@@ -19,10 +19,12 @@ pipeline {
             }
         }
         stage('Deploy to kube step1'){
+        steps{
              withCredentials([usernamePassword(credentialsId: 'kubernetes', passwordVariable: 'Mysuru@123', usernameVariable: 'user')]) {
                     
        					sh "kubectl apply -f ."
        					sh "docker push ceptravi/kube-deploy:latest"
+       					}
        					}
 				}
        
