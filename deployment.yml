@@ -1,6 +1,16 @@
 ---
 apiVersion: apps/v1
 kind: Deployment
+clusters:
+-  cluster:
+      server: https://172.28.12.11:6443
+      certificate-authority: /root/.kube/ca.crt
+   name: kubernetes
+contexts:
+-  context:
+      cluster: kubernetes-admin@kubernetes
+      user: ravi_cept
+
 metadata:
   name: dop-mailoperations1
   labels:
