@@ -1,6 +1,9 @@
 pipeline {
-    agent any
-  
+     agent {
+      kubernetes {
+        yamlFile 'pods.yml'
+      }
+    }
     
     stages{
         stage('Build Docker Image'){
