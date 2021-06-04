@@ -52,13 +52,7 @@ spec:
             defaultContainer 'shell'
         }
     }
-    stages {
-        stage('Main') {
-            steps {
-                sh 'hostname'
-            }
-        }
-        }
+   
       }
            
        
