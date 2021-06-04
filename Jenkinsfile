@@ -1,5 +1,5 @@
 pipeline {
-     
+     agent any
     
     stages{
         stage('Build Docker Image'){
@@ -18,7 +18,12 @@ pipeline {
             }
         }
         
-       
+       stage('Deploy - Staging') {
+    steps {
+        sh './deploy staging'
+        sh './run-smoke-tests'
+    }
+}
        
        stage('List pods') {
        steps{
@@ -43,11 +48,4 @@ pipeline {
 
 
 }
-agent {
-      kubernetes {
-      
-        yamlFile 'pods.yml'
-       
-      }
-    }
 }
