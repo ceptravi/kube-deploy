@@ -47,7 +47,7 @@ spec:
 '''
             // Can also wrap individual steps:
              container('shell') {
-                sh 'hostname'
+                sh 'kubectl get pods'
             }
             defaultContainer 'shell'
         }
