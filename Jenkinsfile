@@ -30,15 +30,9 @@ spec:
         }
     }
     stages {
-        stage('Main') {
-            steps {
-                sh 'hostname'
-            }
-        }
-    }
     
-    stages{
-        stage('Build Docker Image'){
+    
+     stage('Build Docker Image'){
             steps{
                 
                 sh "docker build . -t ceptravi/kube-deploy:latest"
@@ -53,4 +47,11 @@ spec:
 				}
             }
         }
+        stage('Main') {
+            steps {
+                sh 'hostname'
+            }
+        }
+    }
+    
 }
