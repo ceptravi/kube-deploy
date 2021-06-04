@@ -20,6 +20,20 @@ pipeline {
         }
         
        
+       
+       stage('List pods') {
+       steps{
+    withKubeConfig([credentialsId: 'kubeconfig',
+                    caCertificate: '<ca-certificate>',
+                    serverUrl: 'https://172.28.12.11:6443',
+                    contextName: 'kubernetes',
+                    clusterName: 'kubernetes-admin@kubernetes',
+                    namespace: 'default'
+                    ]) {
+      sh 'kubectl get pods'
+    }
+    }
+  }
              	stage('Apply Kubernetes files') {
              	steps{
     				withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://172.28.12.11:6443']) {
