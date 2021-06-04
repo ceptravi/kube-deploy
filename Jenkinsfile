@@ -24,7 +24,7 @@ pipeline {
              	steps{
     				withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://172.28.12.11:6443']) {
     				sh 'sudo -s'
-      				sh 'kubectl apply -f my-kubernetes-directory'
+      				sh 'kubectl get pods'
       				}
     }
   }
