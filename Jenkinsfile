@@ -21,9 +21,11 @@ pipeline {
         
        
              	stage('Apply Kubernetes files') {
+             	steps{
     				withKubeConfig([credentialsId: 'ravi_cept', serverUrl: 'https://172.28.12.11:6443']) {
     				sh 'sudo -s'
       				sh 'kubectl apply -f my-kubernetes-directory'
+      				}
     }
   }
            
