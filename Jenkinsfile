@@ -19,6 +19,17 @@ pipeline {
             }
         }
         
+        stage('Docker Push'){
+            steps{
+             	stage('Apply Kubernetes files') {
+    				withKubeConfig([credentialsId: 'ravi_cept', serverUrl: 'https://172.28.12.11:6443']) {
+    				sh 'sudo -s'
+      				sh 'kubectl apply -f my-kubernetes-directory'
+    }
+  }
+            }
+        }
+        
 
 
 
