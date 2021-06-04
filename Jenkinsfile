@@ -1,35 +1,5 @@
-// Uses Declarative syntax to run commands inside a container.
 pipeline {
-    
-    agent {
-        kubernetes {
-            // Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
-            // Or, to avoid YAML:
-            // containerTemplate {
-            //     name 'shell'
-            //     image 'ubuntu'
-            //     command 'sleep'
-            //     args 'infinity'
-            // }
-            yaml '''
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: shell
-    image: ubuntu
-    command:
-    - sleep
-    args:
-    - infinity
-'''
-            // Can also wrap individual steps:
-            // container('shell') {
-            //     sh 'hostname'
-            // }
-            defaultContainer 'shell'
-        }
-    }
+    agent any
   
     
     stages{
@@ -48,58 +18,9 @@ spec:
 				}
             }
         }
-         stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
-        }
-      }
-    }
-       
-          stage('Deploy to dev'){
-            steps{
-            kubernetesDeploy configs: 'apiVersion: v1 clusters: - cluster:     certificate-authority-data: DATA+OMITTED     server: https://172.28.12.11:6443   name: kubernetes contexts: - context:     cluster: kubernetes     user: kubernetes-admin   name: kubernetes-admin@kubernetes current-context: kubernetes-admin@kubernetes kind: Config preferences: {} users: - name: kubernetes-admin   user:     client-certificate-data: REDACTED     client-key-data: REDACTED', kubeConfig: [path: ''], kubeconfigId: 'mykubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://172.28.12.11:6443']
-            }
-        }
         
-        stage('Deploy K8 practise'){
-            steps{
-            kubernetesDeploykubernetesDeploy configs: 'apiVersion: v1 clusters: - cluster:     certificate-authority-data: DATA+OMITTED     server: https://172.28.12.11::/home/ravi_cept/   name: kubernetes contexts: - context:     cluster: kubernetes     user: kubernetes-admin   name: kubernetes-admin@kubernetes current-context: kubernetes-admin@kubernetes kind: Config preferences: {} users: - name: kubernetes-admin   user:     client-certificate-data: REDACTED     client-key-data: REDACTED', kubeConfig: [path: ''], kubeconfigId: 'mykubeconfig', secretName: 'default-token-rkpxh', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-            }
-        }
-        stage('Deploy to k8s'){
-            steps{
-               
-	
-					sshagent(['kube-machine']) {
-    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
-    					script{
-    					    try{
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
-    					    	}
-    					    catch(error){
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
-    					    			}
-
-    					  
-    							}
-
-					}
-                    
-                    
-                }
-            }
-       
-       
-    }
 
 
-   
-        stage('Main') {
-            steps {
-                sh 'hostname'
-            }
-        }
-   
-    
+
+}
 }
