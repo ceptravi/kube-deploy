@@ -1,7 +1,9 @@
 pipeline {
      agent {
       kubernetes {
+      sh "kubectl get pods"
         yamlFile 'pods.yml'
+       
       }
     }
     
