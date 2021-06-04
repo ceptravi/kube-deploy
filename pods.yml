@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: kube-deploy
-      image: ceptravi/kube-deploy:tagVersion
+      image: ceptravi/kube-deploy:latest
       ports:
         - containerPort: 8080
