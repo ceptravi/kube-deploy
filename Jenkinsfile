@@ -27,7 +27,7 @@ pipeline {
                                 kubeConfig: [path: '/var/lib/jenkins/workspace/.kube/config'],
                                 configs: 'mypods-deployment.yml', 
                                 dockerCredentials: [
-                                      [credentialsId: 'eyJhdXRocyI6eyJrdWJlcm5ldGVzIjp7InVzZXJuYW1lIjoicmF2aV9jZXB0IiwicGFzc3dvcmQiOiJhZG1pbkAxMjMiLCJlbWFpbCI6IjMzLnJhdmlrdW1hckBnbWFpbC5jb20iLCJhdXRoIjoiY21GMmFWOWpaWEIwT21Ga2JXbHVRREV5TXc9PSJ9fX0'],
+                                      [credentialsId: 'regcred'],
                                 ],
 					)
 				}
