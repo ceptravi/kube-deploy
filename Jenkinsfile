@@ -23,7 +23,7 @@ pipeline {
         
          stage('Deploy App') {
       steps {
-        script {
+        
            kubernetes {
             // Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
             // Or, to avoid YAML:
@@ -60,8 +60,7 @@ spec:
         }
         }
       }
-    }
-       
+           
        
 
 
