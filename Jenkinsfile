@@ -35,7 +35,7 @@ pipeline {
             // }
             yaml '''
 apiVersion: v1
-kind: Pod
+kind: Deployment
 spec:
   containers:
   - name: shell
@@ -46,9 +46,9 @@ spec:
     - infinity
 '''
             // Can also wrap individual steps:
-            // container('shell') {
-            //     sh 'hostname'
-            // }
+             container('shell') {
+                sh 'hostname'
+            }
             defaultContainer 'shell'
         }
     }
