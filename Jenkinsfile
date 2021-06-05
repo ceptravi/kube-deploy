@@ -43,10 +43,10 @@ pipeline {
             }
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
-            sh 'ssh -o StrictHostKeyChecking=no user@hostname.com uptime'
+        sshagent(credentials : ['id_ed25519']) {
+            sh 'ssh -o StrictHostKeyChecking=no ravicept@cept.gov.in uptime'
             sh 'ssh -v user@hostname.com'
-            sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+            sh 'scp ./source/filename ravicept@cept.gov.in:/remotehost/target'
         }
     }
 }

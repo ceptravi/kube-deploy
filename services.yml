@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: kube-deploy
+  name: kubernetes
 spec:
   selector:
-    app: kube-deploy
+    app: kubernetes
   ports:
   - protocol: TCP
     port: 80
