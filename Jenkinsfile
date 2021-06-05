@@ -22,8 +22,8 @@ pipeline {
       steps {
           withKubeConfig([credentialsId: 'test-cluster']) {
           sh 'sudo -s'
-          sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
-          sh 'kubectl apply -f services.yml'
+         
+          sh 'kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
         }
       }
   }
