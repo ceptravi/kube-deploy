@@ -41,24 +41,7 @@ pipeline {
                     
                 }
             }
-        stage ('Deploy') {
-    steps{
-        sshagent(credentials : ['id_ed25519']) {
-            sh 'ssh -o StrictHostKeyChecking=no ravicept@cept.gov.in uptime'
-            sh 'ssh -v user@hostname.com'
-            sh 'scp ./source/filename ravicept@cept.gov.in:/remotehost/target'
-        }
-    }
-}
-        stage('Apply Kubernetes Files') {
-      steps {
-          withKubeConfig([credentialsId: 'test-cluster']) {
-          sh 'sudo -s'
-         
-          sh 'kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
-        }
-      }
-  }
+        
         
     	
 }
