@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dop-mailoperations1
+  name: kube-deploy
   labels:
     app: web
 spec:
