@@ -18,14 +18,7 @@ pipeline {
 				}
             }
         }
-         stage('Deploy App') {
-      		steps {
-        		script {
-          			kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
-        				}
-      		}
-    	}
-    	stage('Apply Kubernetes Files') {
+        stage('Apply Kubernetes Files') {
       steps {
           withKubeConfig([credentialsId: 'test-cluster']) {
           sh 'sudo -s'
@@ -34,6 +27,14 @@ pipeline {
         }
       }
   }
+         stage('Deploy App') {
+      		steps {
+        		script {
+          			kubernetesDeploy(configs: "myweb.yaml", kubeconfigId: "mykubeconfig")
+        				}
+      		}
+    	}
+    	
 }
 post {
     success {
