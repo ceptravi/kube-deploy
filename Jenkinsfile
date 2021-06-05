@@ -18,6 +18,38 @@ pipeline {
 				}
             }
         }
+        
+     stage('Deploy to k8s'){
+            steps{
+               
+	
+					sshagent(['id_ed25519']) {
+    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
+    					script{
+    					    try{
+    					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
+    					    	}
+    					    catch(error){
+    					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
+    					    			}
+
+    					  
+    							}
+
+					}
+                    
+                    
+                }
+            }
+        stage ('Deploy') {
+    steps{
+        sshagent(credentials : ['use-the-id-from-credential-generated-by-jenkins']) {
+            sh 'ssh -o StrictHostKeyChecking=no user@hostname.com uptime'
+            sh 'ssh -v user@hostname.com'
+            sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+        }
+    }
+}
         stage('Apply Kubernetes Files') {
       steps {
           withKubeConfig([credentialsId: 'test-cluster']) {
