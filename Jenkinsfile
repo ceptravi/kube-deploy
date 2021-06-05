@@ -24,18 +24,9 @@ pipeline {
                
 	
 					sshagent(['id_ed25519']) {
-    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
-    					script{
-    					    try{
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
-    					    	}
-    					    catch(error){
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
-    					    			}
-
-    					  
-    							}
-
+    					 sh 'ssh -o StrictHostKeyChecking=no ravicept@cept.gov.in uptime'
+            sh 'ssh -v user@hostname.com'
+            sh 'scp ./source/filename ravicept@cept.gov.in:/remotehost/target'
 					}
                     
                     
