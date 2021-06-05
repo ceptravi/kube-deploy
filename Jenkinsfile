@@ -24,9 +24,9 @@ pipeline {
                
 	
 					sshagent(['id_ed25519']) {
-    					 sh 'ssh -o StrictHostKeyChecking=no ravicept@cept.gov.in uptime'
-            sh 'ssh -v user@hostname.com'
-            sh 'scp ./source/filename ravicept@cept.gov.in:/remotehost/target'
+    					sh 'sudo -s'
+         
+          sh 'kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
 					}
                     
                     
