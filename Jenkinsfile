@@ -34,7 +34,7 @@ pipeline {
                
 	
 					sshagent(['id_ed25519']) {
-    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:/home/ravi_cept/"
+    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:6443"
     					script{
     					    try{
     					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
