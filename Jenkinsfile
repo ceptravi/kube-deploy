@@ -27,7 +27,7 @@ pipeline {
     	}
     	stage('Apply Kubernetes Files') {
       steps {
-          withKubeConfig([credentialsId: 'kubernetes']) {
+          withKubeConfig([credentialsId: 'jenkins-token-5b2pv']) {
           sh 'sudo -s'
           sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
           sh 'kubectl apply -f service.yaml'
