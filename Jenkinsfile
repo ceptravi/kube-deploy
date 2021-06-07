@@ -21,7 +21,7 @@ pipeline {
         
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['deploy-dev']) {
+        sshagent(credentials : ['532546']) {
          sh 'ssh -o StrictHostKeyChecking=no -l kubernetes 172.28.12.11 ravi_cept -a'
         }
     }
