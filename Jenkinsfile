@@ -27,11 +27,11 @@ pipeline {
           script{
     					    try{
     					    	sh 'sudo -s'
-    					        sh 'kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
+    					        sh 'sudo kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
     					    	}
     					    catch(error){
     					    	sh 'sudo -s'
-    					        sh 'kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
+    					        sh 'sudo kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
     					    }
 
     					  
