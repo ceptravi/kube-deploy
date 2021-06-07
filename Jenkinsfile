@@ -27,11 +27,11 @@ pipeline {
           script{
     					    try{
     					    	sh 'sudo -s'
-    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
+    					        sh 'kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
     					    	}
     					    catch(error){
     					    	sh 'sudo -s'
-    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
+    					        sh 'kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
     					    }
 
     					  
