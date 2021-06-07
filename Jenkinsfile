@@ -22,9 +22,10 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['id_ed25519']) {
-         sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
-        sh 'chmod u+x ./kubectl'  
-        sh './kubectl get pods'
+        sh 'sudo -s'
+            sh 'sudo ssh -o StrictHostKeyChecking=no root@VMKUBM1 uptime'
+            sh 'ssh -v ravi_cept@172.28.12.11:/home/ravi_cept/'
+            sh 'scp ./source/filename ravi_cept@172.28.12.11:/home/ravi_cept/'
         }
     }
 }
