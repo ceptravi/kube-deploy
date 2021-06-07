@@ -24,7 +24,7 @@ pipeline {
         sshagent(credentials : ['id_ed25519']) {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
-          sh 'ssh -v ravi_cept@172.28.12.11'
+          sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
         }
     }
 }
