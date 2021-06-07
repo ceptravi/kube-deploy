@@ -22,7 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['id_ed25519']) {
-           sh 'ssh  ravi_cept@172.28.12.11 '
+           sh 'ssh -t ravi_cept@172.28.12.11 '
             sh 'ssh -v ravi_cept@172.28.12.11'
             sh 'scp ./source/filename ravi_cept@172.28.12.11:/remotehost/target'
         }
