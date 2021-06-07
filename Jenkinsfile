@@ -25,7 +25,7 @@ pipeline {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
           sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
-          sh 'sshpass -p "Mysuru@123" scp https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml ravicept@172.28.12.11:/home'
+         
           
         }
     }
