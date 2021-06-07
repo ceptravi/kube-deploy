@@ -22,10 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['id_ed25519']) {
-         
-            sh 'ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11 uptime'
-            sh 'ssh -v ravi_cept@172.28.12.11'
-            sh 'scp ./source/filename ravi_cept@172.28.12.11:/remotehost/target'
+           sh 'ssh -vT -o "StrictHostKeyChecking=no" ravi_cept@172.28.12.11'
         }
     }
 }
