@@ -23,7 +23,7 @@ pipeline {
     steps{
         sshagent(credentials : ['jenkins']) {
          sh 'sudo -s'
-         sh 'ssh ravi_cept 172.28.12.11'
+         sh 'ssh ravi_cept 172.28.12.11:6443'
         }
     }
 }
