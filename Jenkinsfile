@@ -21,7 +21,7 @@ pipeline {
         
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['id_ed25519']) {
+        sshagent(credentials : ['GsKaRRAIHxSC4yTah+aTj0JKIEQM+nASK4ST8EqqSLo']) {
            sh 'ssh -vT -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
         }
     }
