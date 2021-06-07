@@ -25,7 +25,7 @@ pipeline {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
          
-          sh 'sshpass -p "Mysuru@123" sudo kubectl get pods'
+          sh 'sshpass -p "Mysuru@123" ssh ravi_cept@172.28.12.11 sudo kubectl get pods'
           
         }
     }
