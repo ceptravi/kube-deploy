@@ -22,8 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['jenkins']) {
-         sh 'sudo -s'
-         sh 'ssh VMKUBM1 172.28.12.11:6443'
+           sh 'ssh -vT -o "StrictHostKeyChecking=no" git@github.com'
         }
     }
 }
