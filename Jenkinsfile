@@ -22,7 +22,8 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['id_ed25519']) {
-           sh 'sudo ssh -o ${VMKUBM1}  kubernetes-admin@172.28.12.11:6443 uptime'
+        sh '''ssh -i ${VMKUBM1} -o StrictHostKeyChecking=no -o kubernetes-admin@172.28.12.11:6443 "sudo su -c \"sh ./home/centos/releases/xx.sh\" rundeck"'''
+           sh 'ssh -o ${VMKUBM1}  kubernetes-admin@172.28.12.11:6443 uptime'
             sh 'ssh -v ravi_cept@172.28.12.11'
             sh 'scp ./source/filename root@VMKUBM1:/home/ravi_cept@cept.gov.in'
         }
