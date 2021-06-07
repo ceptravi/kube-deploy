@@ -24,8 +24,17 @@ pipeline {
         sshagent(credentials : ['id_ed25519']) {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
-         
-          sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl get pods'
+          script{
+    					    try{
+    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl apply -f .'
+    					    	}
+    					    catch(error){
+    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl create -f .'
+    					    			}
+
+    					  
+    			}
+          
           
         }
     }
