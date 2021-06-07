@@ -23,9 +23,9 @@ pipeline {
     steps{
         sshagent(credentials : ['1SbQN0zh4GcMgOqiX7sRdWBkbwfJTL5E4']) {
        
-           sh 'ssh -t -t ravi_cept@172.28.12.11'
-           sh 'sudo -s'
-           sh 'kubectl get pods'
+          sh 'ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11 uptime'
+            sh 'ssh -v ravi_cept@172.28.12.11'
+            sh 'scp ./source/filename ravi_cept@172.28.12.11:/remotehost/target'
         }
     }
 }
