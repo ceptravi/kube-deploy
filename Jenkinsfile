@@ -23,7 +23,7 @@ pipeline {
     steps{
         sshagent(credentials : ['id_ed25519']) {
        
-           sh 'ssh -vT -o StrictHostKeyChecking=no root@172.28.12.11 /bin/bash'
+           sh 'ssh -vT -o StrictHostKeyChecking=no ravi_cept@172.28.12.11 /bin/bash'
         }
     }
 }
