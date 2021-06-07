@@ -22,9 +22,9 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['id_ed25519']) {
-           sh 'sudo ssh -o  StrictHostKeyChecking=no ravi_cept@172.28.12.11 uptime'
+           sh 'sudo ssh -o  StrictHostKeyChecking=no root@172.28.12.11 uptime'
             sh 'ssh -v ravi_cept@172.28.12.11'
-            sh 'scp ./source/filename ravi_cept@172.28.12.11:/remotehost/target'
+            sh 'scp ./source/filename root@VMKUBM1:/home/ravi_cept@cept.gov.in'
         }
     }
 }
