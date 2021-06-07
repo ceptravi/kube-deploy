@@ -21,7 +21,7 @@ pipeline {
         
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['jenkins']) {
+        sshagent(credentials : ['id_ed25519']) {
            sh 'ssh -vT -o "StrictHostKeyChecking=no" ravi_cept@VMKUBM1'
         }
     }
