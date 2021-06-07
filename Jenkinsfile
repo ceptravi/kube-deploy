@@ -22,7 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['id_ed25519']) {
-           sh 'sudo ssh -o  root@172.28.12.11 uptime'
+           sh 'sudo ssh -o ${VMKUBM1}  root@172.28.12.11 uptime'
             sh 'ssh -v ravi_cept@172.28.12.11'
             sh 'scp ./source/filename root@VMKUBM1:/home/ravi_cept@cept.gov.in'
         }
