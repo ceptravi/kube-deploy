@@ -21,33 +21,12 @@ pipeline {
         
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['532546']) {
+        sshagent(credentials : ['deploy-dev']) {
          sh 'ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.1.106 uname -a'
         }
     }
 }
 
-     stage('Deploy to k8s'){
-            steps{
-               
-	
-					sshagent(['id_ed25519']) {
-    					sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ravi_cept@172.28.12.11:6443"
-    					script{
-    					    try{
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl apply -f ."
-    					    	}
-    					    catch(error){
-    					        sh "ssh ravi_cept@172.28.12.11 kubectl create -f ."
-    					    			}
-
-    					  
-    							}
-					}
-                    
-                    
-                }
-            }
         
         
     	
