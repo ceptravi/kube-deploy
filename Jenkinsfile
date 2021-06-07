@@ -23,7 +23,9 @@ pipeline {
     steps{
         sshagent(credentials : ['id_ed25519']) {
        
-           sh 'ssh -vT -o StrictHostKeyChecking=no ravi_cept@172.28.12.11 /bin/bash'
+           sh 'ssh ravi_cept@172.28.12.11'
+           sh 'sudo -s'
+           sh 'kubectl get pods'
         }
     }
 }
