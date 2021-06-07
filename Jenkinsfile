@@ -23,7 +23,7 @@ pipeline {
     steps{
         sshagent(credentials : ['id_ed25519']) {
        
-           sh 'ssh -t -t ravi_cept@172.28.12.11'
+           sh 'ssh -t -t root@172.28.12.11'
            sh 'sudo -s'
            sh 'kubectl get pods'
         }
