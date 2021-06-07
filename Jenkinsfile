@@ -21,7 +21,7 @@ pipeline {
         
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['id_ed25519'], passwordVariable: 'Mysuru@123', usernameVariable: 'ravi_cept') {
+        sshagent(credentials : ['id_ed25519'], passwordVariable: ['Mysuru@123'], usernameVariable: ['ravi_cept']) {
        
            sh 'ssh -t -t ravi_cept@172.28.12.11'
            sh 'sudo -s'
