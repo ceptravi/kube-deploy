@@ -22,7 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['jenkins']) {
-         sh ''
+         sh 'sudo -s'
         }
     }
 }
