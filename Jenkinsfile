@@ -24,19 +24,8 @@ pipeline {
         sshagent(credentials : ['id_ed25519']) {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
-          script{
-    					    try{
-    					    	sh 'sudo -s'
-    					        sh 'sudo kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
-    					    	}
-    					    catch(error){
-    					    	sh 'sudo -s'
-    					        sh 'sudo kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
-    					    }
-
-    					  
-    			}
-          
+          sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
+         
           
         }
     }
