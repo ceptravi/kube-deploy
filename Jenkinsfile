@@ -23,9 +23,8 @@ pipeline {
     steps{
         sshagent(credentials : ['id_ed25519']) {
        
-          sh 'ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11 uptime'
-            sh 'ssh -v ravi_cept@172.28.12.11'
-            sh 'scp ./source/filename ravi_cept@172.28.12.11:/remotehost/target'
+          sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
+         
         }
     }
 }
