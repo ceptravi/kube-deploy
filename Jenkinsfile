@@ -22,7 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['deploy-dev']) {
-         sh 'ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.1.106 uname -a'
+         sh 'ssh -o StrictHostKeyChecking=no -l kubernetes 172.28.12.11 ravi_cept -a'
         }
     }
 }
