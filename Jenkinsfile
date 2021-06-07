@@ -26,10 +26,10 @@ pipeline {
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
           script{
     					    try{
-    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl apply -f .'
+    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
     					    	}
     					    catch(error){
-    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl create -f .'
+    					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
     					    			}
 
     					  
