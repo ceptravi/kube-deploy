@@ -22,7 +22,7 @@ pipeline {
         stage ('Deploy') {
     steps{
         sshagent(credentials : ['jenkins']) {
-           sh 'ssh -vT -o "StrictHostKeyChecking=no" git@github.com'
+           sh 'ssh -vT -o "StrictHostKeyChecking=no" ravi_cept@VMKUBM1'
         }
     }
 }
