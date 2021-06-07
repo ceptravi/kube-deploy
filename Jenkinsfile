@@ -21,9 +21,9 @@ pipeline {
         
         stage ('Deploy') {
     steps{
-        sshagent(credentials : ['id_ed25519']) {
+        sshagent(credentials : ['1SbQN0zh4GcMgOqiX7sRdWBkbwfJTL5E4']) {
        
-           sh 'ssh -t -t root@172.28.12.11'
+           sh 'ssh -t -t ravi_cept@172.28.12.11'
            sh 'sudo -s'
            sh 'kubectl get pods'
         }
