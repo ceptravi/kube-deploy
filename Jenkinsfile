@@ -30,7 +30,7 @@ pipeline {
     					    	}
     					    catch(error){
     					        sh 'sshpass -p "Mysuru@123" sudo -s ssh ravi_cept@172.28.12.11 kubectl create -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml'
-    					    			}
+    					    }
 
     					  
     			}
