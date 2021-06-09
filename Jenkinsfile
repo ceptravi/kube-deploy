@@ -1,6 +1,8 @@
 pipeline {
     agent any
-  
+  environment {
+        USER_CREDENTIALS = credentials('USER_PASSWORD')
+    }
     
     stages{
         stage('Build Docker Image'){
@@ -23,7 +25,7 @@ pipeline {
     steps{
         sshagent(credentials : ['id_ed25519']) {
        
-          sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
+          sh 'sshpass -p "$USER_CREDENTIALS_PSW" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
           sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
          
           
