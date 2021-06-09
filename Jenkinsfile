@@ -23,7 +23,7 @@ pipeline {
     steps{
         sshagent(credentials : ['id_ed25519']) {
        
-          sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11 kubectl apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml || true'
+          sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
           sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
          
           
