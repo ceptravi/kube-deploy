@@ -25,7 +25,7 @@ pipeline {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
           sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
-          sh 'sshpass -p "Mysuru@123"  ssh kubernetes 'kubectl --kubeconfig=/root/.kube/config get nodes''
+          sh 'sshpass -p "Mysuru@123"  ssh kubernetes "kubectl --kubeconfig=/root/.kube/config get nodes"'
          
           
         }
