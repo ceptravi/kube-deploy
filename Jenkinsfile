@@ -25,6 +25,7 @@ pipeline {
        
           sh 'sshpass -p "Mysuru@123" ssh -o StrictHostKeyChecking=no ravi_cept@172.28.12.11'
           sh 'sshpass -p "Mysuru@123" ssh -v ravi_cept@172.28.12.11'
+          sh 'sshpass -p "Mysuru@123"  ssh ravi_cept@172.28.12.11 "kubectl --kubeconfig=/home/ravi_cept@cept.gov.in/Desktop/kubernetFolder/config apply -f https://raw.githubusercontent.com/ceptravi/kube-deploy/main/deployment.yml"'
           sh 'sshpass -p "Mysuru@123"  ssh ravi_cept@172.28.12.11 "kubectl --kubeconfig=/home/ravi_cept@cept.gov.in/Desktop/kubernetFolder/config get deployments"'
          
           
