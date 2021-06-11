@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kube-deploy
+  name: kube-deployment
   labels:
     app: web
 spec:
